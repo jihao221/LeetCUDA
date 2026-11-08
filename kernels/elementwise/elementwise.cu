@@ -181,14 +181,14 @@ __global__ void elementwise_add_f16x8_pack_kernel(half *a, half *b, half *c,
       }                                                                        \
     }                                                                          \
   }
-
+//包装为python可调用函数
 TORCH_BINDING_ELEM_ADD(f32, torch::kFloat32, float, 1)
 TORCH_BINDING_ELEM_ADD(f32x4, torch::kFloat32, float, 4)
 TORCH_BINDING_ELEM_ADD(f16, torch::kHalf, half, 1)
 TORCH_BINDING_ELEM_ADD(f16x2, torch::kHalf, half, 2)
 TORCH_BINDING_ELEM_ADD(f16x8, torch::kHalf, half, 8)
 TORCH_BINDING_ELEM_ADD(f16x8_pack, torch::kHalf, half, 8)
-
+//调用的函数名：elementwise_add_f32
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
   TORCH_BINDING_COMMON_EXTENSION(elementwise_add_f32)
   TORCH_BINDING_COMMON_EXTENSION(elementwise_add_f32x4)
