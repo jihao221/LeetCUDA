@@ -24,7 +24,7 @@ lib = load(
     extra_cflags=["-std=c++17"],
 )
 
-
+//性能测试
 def run_benchmark(
     perf_func: callable,
     a: torch.Tensor,
@@ -85,7 +85,7 @@ for S, K in SKs:
     a_f16 = a.half().contiguous()
     b_f16 = b.half().contiguous()
     c_f16 = c.half().contiguous()
-    run_benchmark(lib.elementwise_add_f16, a_f16, b_f16, "f16", c_f16)
+    run_benchmark(lib.elementwise_add_f16, a_f16, b_f16, "f16", c_f16)//lib为11行的lib。
     run_benchmark(lib.elementwise_add_f16x2, a_f16, b_f16, "f16x2", c_f16)
     run_benchmark(lib.elementwise_add_f16x8, a_f16, b_f16, "f16x8", c_f16)
     run_benchmark(
